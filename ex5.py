@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import string
 class CaesarCipher:
     def __init__(self, key):
         self.key=key
@@ -8,14 +9,17 @@ class CaesarCipher:
         alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
         Capital_alphabet=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
         key = self.key.copy()
-        encriptmessege= messege.copy()
+        encriptmessege= ''
         for letter in messege:
+            char = messege[letter]
             if letter in alphabet:
-                encriptmessege[letter] = alphabet[letter-1 + key]
+                char = alphabet[letter-1 + key]
+                encriptmessege +=char
             elif letter in Capital_alphabet:
-                encriptmessege[letter] = Capital_alphabet[letter-1 + key]
+                char = Capital_alphabet[letter-1 + key]
+                encriptmessege +=char
             else:
-                encriptmessege[letter]=letter
+                encriptmessege+=char
         return encriptmessege
     
     def decrypt(self,messege):
@@ -32,16 +36,17 @@ class VigenereCipher(CaesarCipher):
         alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
         Capital_alphabet=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
         key = self.key.copy()
-        encriptmessege= messege.copy()
+        encriptmessege= ''
         for letter in messege:
-            if letter == key.size():
-                key = self.key.copy()
+            char = messege[letter]
             if letter in alphabet:
-                encriptmessege[letter] = alphabet[letter-1 + key[letter]]
+                char = alphabet[letter-1 + key]
+                encriptmessege +=char
             elif letter in Capital_alphabet:
-                encriptmessege[letter] = Capital_alphabet[letter-1 + key[letter]]
+                char = Capital_alphabet[letter-1 + key]
+                encriptmessege +=char
             else:
-                encriptmessege[letter]=letter
+                encriptmessege+=char
         return encriptmessege
     
     def decrypt(self, messege):
