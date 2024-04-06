@@ -92,8 +92,3 @@ def loadEncryptionSystem(dir_path, plaintext_suffix):
                             dest.seek(0)
                             dest.write(decrypted_content)
                             dest.truncate()
-
-if __name__ == '__main__':
-    caesar = CaesarCipher(1)
-    caesar.key_shift(2)
-    print( 'd' == caesar.encrypt('a'))
