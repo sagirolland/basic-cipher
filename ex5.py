@@ -30,11 +30,12 @@ class VigenereCipher:
                 encriptmessage+=char
         return encriptmessage
     
-    def decrypt(self, message):
-        for i, e in enumerate(self.key):
-            self.key[i]= -e
-        decoded= self.encrypt(message)
-        return decoded
+   def decrypt(self, message):
+    original_key = self.key
+    self.key = [-k for k in original_key]
+    decoded = self.encrypt(message)
+    self.key = original_key
+    return decoded
     
 class CaesarCipher(VigenereCipher):
     def __init__(self, key):
